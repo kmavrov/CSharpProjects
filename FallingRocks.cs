@@ -161,6 +161,7 @@ class Program
             //3) also with each rock from this list several checks will be made:
             //   a) if the rock hits the player - if yes - substract lives
             //   b) if no, but it is still on the bottom row - add points
+
             List<Rock> newRocksList = new List<Rock>();
 
             //a loop to move all the rocks from the list 
@@ -184,12 +185,6 @@ class Program
                     //if the Y coordinate is valid - add the rock to the new temporary list
                     newRocksList.Add(newTempRock);
                 }
-
-                //Save all the temporary valid rocks to the global list of rocks
-                //this means that some of the old rocks in the global list will no longer exist,
-                //because they have reached the bottom. This ensures that only the valid rocks
-                //will be stored and later displayed.
-                Rocks = newRocksList;
 
                 //This checks if the rock is on the last line (the same line as the dwarf)
                 if (newTempRock.Y == Console.WindowHeight)
@@ -216,6 +211,11 @@ class Program
 
             }
 
+            //Save all the temporary valid rocks to the global list of rocks
+            //this means that some of the old rocks in the global list will no longer exist,
+            //because they have reached the bottom. This ensures that only the valid rocks
+            //will be stored and later displayed.
+            Rocks = newRocksList;
             //This checks to see if there are some keys that are being pressed
             if (Console.KeyAvailable)
             {
